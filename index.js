@@ -1,8 +1,9 @@
 var download    = require('download'),
-    spinner     = require('cli-spinner'),
+    spinner     = require('cli-spinner').Spinner,
     path        = require('path'),
     walker      = require('walker'),
     fse         = require('fs-extra'),
+    replace     = require('replace'),
     solution    = {};
 
 if(process.argv.length < 3 || process.argv[2].length === 0)
@@ -31,9 +32,55 @@ var isEditorScript = function (pathReference, scriptFile) {
     return false;
 };
 
+var invertSlashes = function (string) {
+    return string.replace(/\//ig, '\\');
+};
+
 var preprocessPath = function (element, index, array) {
-    array[index] = '<Compile Include="' + element + '" />';
-}
+    array[index] = '<Compile Include="' + invertSlashes(element) + '" />';
+};
+
+var placeSolution = function (sourceCodePath) {
+    var targetPath = path.resolve(sourceCodePath + '/..');
+    fse.copySync('./template', targetPath);
+    return targetPath;
+};
+
+var writeScripts = function (solutionPath, scripts) {
+    replace({
+        regex: '{{SCRIPTITEMS}}',
+        replacement: scripts.join('\n'),
+        paths: [solutionPath],
+        recursive: false,
+        silent: true,
+        preview: false
+    });
+};
+
+var prepareReferences = function(solutionPath) {
+    var dl = new download({ extract: true, strip: 1 });
+    dl.get('https://github.com/malud/unity-libs/archive/5.0.0f4.zip').dest(solutionPath);
+    var spi = new spinner('Downloading references...');
+    spi.setSpinnerString(10);
+    spi.start();
+
+    dl.run(function (err, files) {
+        if(err)
+        {
+            throw err;
+        }
+
+        spi.stop(true);
+        console.log('Solution is prepared now.');
+        replace({
+            regex: '{{REFERENCEPATH}}',
+            replacement: invertSlashes(path.resolve(path.join(solutionPath, 'References'))),
+            paths: [solutionPath],
+            recursive: true,
+            silent: true
+        });
+    });
+};
 
 solution.create = function (pathParam) {
     if(!isPathValid(pathParam))
@@ -77,6 +124,10 @@ solution.create = function (pathParam) {
         .on('end', function() {
             playerFiles.forEach(preprocessPath);
             editorFiles.forEach(preprocessPath);
+            slnPath = placeSolution(pathParam);
+            writeScripts(path.join(slnPath, 'Assembly-CSharp.csproj'), playerFiles);
+            writeScripts(path.join(slnPath, 'Assembly-CSharp-Editor.csproj'), editorFiles);
+            prepareReferences(slnPath);
         })
     ;
 };

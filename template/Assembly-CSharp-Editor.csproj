@@ -37,74 +37,41 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>References\Managed\UnityEngine.dll</HintPath>
+      <HintPath>{{REFERENCEPATH}}\Managed\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>References\Managed\UnityEditor.dll</HintPath>
+      <HintPath>{{REFERENCEPATH}}\Managed\UnityEditor.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Packages\UnityGameBase\Core\Editor\MakePrefab.cs" />
-    <Compile Include="Assets\Packages\UnityGameBase\Core\Editor\UGBEditorUtils.cs" />
-    <Compile Include="Assets\Packages\UnityGameBase\Core\Editor\UnityGameBaseVersionMenu.cs" />
-    <Compile Include="Assets\Packages\UnityGameBase\Core\SceneMenu\Editor\BlenderShortCuts.cs" />
-    <Compile Include="Assets\Packages\UnityGameBase\Core\SceneMenu\Editor\Commands\DeleteSelectedCommand.cs" />
-    <Compile Include="Assets\Packages\UnityGameBase\Core\SceneMenu\Editor\Commands\PlayDefaultSceneCommand.cs" />
-    <Compile Include="Assets\Packages\UnityGameBase\Core\SceneMenu\Editor\Commands\SaveSceneCommand.cs" />
-    <Compile Include="Assets\Packages\UnityGameBase\Core\SceneMenu\Editor\Commands\SwitchDefaultSceneCommand.cs" />
-    <Compile Include="Assets\Packages\UnityGameBase\Core\SceneMenu\Editor\Commands\SwitchGameSceneCommand.cs" />
-    <Compile Include="Assets\Packages\UnityGameBase\Core\SceneMenu\Editor\SceneMenu.cs" />
-    <Compile Include="Assets\Packages\UnityGameBase\Core\SceneMenu\Editor\SceneMenuCommand.cs" />
-    <Compile Include="Assets\Packages\UnityGameBase\Core\Templates\Editor\BaseTemplate.cs" />
-    <Compile Include="Assets\Packages\UnityGameBase\Core\Templates\Editor\TemplateCSharp.cs" />
-    <Compile Include="Assets\Packages\UnityGameBase\Core\Templates\Editor\TemplateUGB.cs" />
-    <Compile Include="Assets\Packages\UnityGameBase\Core\UGBSetup\scripts\Editor\Steps\CreateDefaultSceneStep.cs" />
-    <Compile Include="Assets\Packages\UnityGameBase\Core\UGBSetup\scripts\Editor\Steps\CreateFoldersStep.cs" />
-    <Compile Include="Assets\Packages\UnityGameBase\Core\UGBSetup\scripts\Editor\Steps\CreateGameLogicClass.cs" />
-    <Compile Include="Assets\Packages\UnityGameBase\Core\UGBSetup\scripts\Editor\Steps\OpenLogicClassInMD.cs" />
-    <Compile Include="Assets\Packages\UnityGameBase\Core\UGBSetup\scripts\Editor\UGBSetup.cs" />
-    <Compile Include="Assets\Packages\UnityGameBase\Core\UGBSetup\scripts\Editor\UGBSetupPostProcessor.cs" />
-    <Compile Include="Assets\Packages\UnityGameBase\Core\UGBSetup\scripts\Editor\UGBSetupStep.cs" />
-    <Compile Include="Assets\Packages\UnityGameBase\Core\UGBSetup\scripts\Editor\UGBTemplateSetup.cs" />
-    <Compile Include="Assets\Packages\UnityGameBase\Core\UGBSetup\scripts\Editor\UGBWindowBase.cs" />
-    <Compile Include="Assets\Packages\UnityGameBase\Core\UGBSetup\scripts\Editor\UnityGameBaseSetupWindow.cs" />
-    <Compile Include="Assets\Packages\UnityGameBase\Core\XUI\scripts\Editor\EditorHelper.cs" />
-    <Compile Include="Assets\Packages\UnityGameBase\Core\XUI\scripts\Editor\LocalizedTextInspector.cs" />
-    <Compile Include="Assets\Packages\UnityGameBase\Core\XUI\scripts\Editor\PrefabGeneratorInspector.cs" />
-    <Compile Include="Assets\Packages\UnityGameBase\Core\XUI\scripts\Editor\ScreenTransitionInspector.cs" />
-    <Compile Include="Assets\Packages\UnityGameBase\Core\XUI\scripts\Editor\XUIEditor.cs" />
-    <Compile Include="Assets\Packages\UnityGameBase\Core\XUI\scripts\Editor\XUIHierarchyViewerInspector.cs" />
-    <Compile Include="Assets\Packages\UnityGameBase\Core\XUI\scripts\Editor\XUISceneContextMenu.cs" />
-    <Compile Include="Assets\Packages\UnityGameBase\Core\animation\Editor\TransformSequenceInspector.cs" />
-    <Compile Include="Assets\Packages\UnityGameBase\Core\localization\scripts\Editor\UGBLocaParser.cs" />
-    <Compile Include="Assets\Packages\UnityGameBase\Core\localization\scripts\Editor\UGBLocaPostProcessor.cs" />
+    {{SCRIPTITEMS}}
     <Reference Include="UnityEngine.UI">
-      <HintPath>References\UnityExtensions\Unity\GUISystem\UnityEngine.UI.dll</HintPath>
+      <HintPath>{{REFERENCEPATH}}\UnityExtensions\Unity\GUISystem\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Graphs">
-      <HintPath>References\Managed\UnityEditor.Graphs.dll</HintPath>
+      <HintPath>{{REFERENCEPATH}}\Managed\UnityEditor.Graphs.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Android.Extensions">
-      <HintPath>References\PlaybackEngines\AndroidPlayer\UnityEditor.Android.Extensions.dll</HintPath>
+      <HintPath>{{REFERENCEPATH}}\PlaybackEngines\AndroidPlayer\UnityEditor.Android.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions">
-      <HintPath>References\PlaybackEngines\iossupport\UnityEditor.iOS.Extensions.dll</HintPath>
+      <HintPath>{{REFERENCEPATH}}\PlaybackEngines\iossupport\UnityEditor.iOS.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.BB10.Extensions">
-      <HintPath>References\PlaybackEngines\BlackBerryPlayer\UnityEditor.BB10.Extensions.dll</HintPath>
+      <HintPath>{{REFERENCEPATH}}\PlaybackEngines\BlackBerryPlayer\UnityEditor.BB10.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.WebGL.Extensions">
-      <HintPath>References\PlaybackEngines\WebGLSupport\UnityEditor.WebGL.Extensions.dll</HintPath>
+      <HintPath>{{REFERENCEPATH}}\PlaybackEngines\WebGLSupport\UnityEditor.WebGL.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.LinuxStandalone.Extensions">
-      <HintPath>References\PlaybackEngines\LinuxStandaloneSupport\UnityEditor.LinuxStandalone.Extensions.dll</HintPath>
+      <HintPath>{{REFERENCEPATH}}\PlaybackEngines\LinuxStandaloneSupport\UnityEditor.LinuxStandalone.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
-      <HintPath>References\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+      <HintPath>{{REFERENCEPATH}}\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.OSXStandalone.Extensions">
-      <HintPath>References\PlaybackEngines\MacStandaloneSupport\UnityEditor.OSXStandalone.Extensions.dll</HintPath>
+      <HintPath>{{REFERENCEPATH}}\PlaybackEngines\MacStandaloneSupport\UnityEditor.OSXStandalone.Extensions.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
