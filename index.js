@@ -42,7 +42,7 @@ var preprocessPath = function (element, index, array) {
 
 var placeSolution = function (sourceCodePath) {
     var targetPath = path.resolve(sourceCodePath + '/..');
-    fse.copySync('./template', targetPath);
+    fse.copySync(path.join(__dirname, 'template'), targetPath);
     return targetPath;
 };
 
