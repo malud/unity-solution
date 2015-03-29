@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C3DA89E1-70C6-7D6C-993E-C8F831D35880}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <BaseDirectory>Assets</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>Temp\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_0_0;UNITY_5_0;UNITY_5;ENABLE_LICENSE_RENAME;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_NEW_HIERARCHY;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_NONPRO;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;UNITY_STANDALONE_OSX;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_GAMECENTER;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>Temp\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UnityEngine">
+      <HintPath>References\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>References\Managed\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Data\LocaData.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Data\Savegame\IIOProvider.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Data\Savegame\ISavegame.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Data\Savegame\Metadata.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Data\Savegame\Provider\XMLAsyncProvider.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Data\Savegame\Provider\XMLProvider.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Data\Savegame\SavegameBase.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Data\Savegame\SavegameController.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Data\Savegame\SavegameData.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Data\Savegame\XmlObjectSerializer.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Data\XmlLocaData.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\DontUse\LogicDummy.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Game\Game.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Game\GameComponent.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Game\GameData.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Game\GameLogicImplementationAttribute.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Game\GameLogicImplementationBase.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Game\GameOptions.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Game\GamePause.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Game\GameStateManager.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Game\Input\BaseGesture.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Game\Input\GameInput.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Game\Input\GestureHandlerBase.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Game\Input\GestureHandlerComponent.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Game\Input\InputDelegates.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Game\Input\KeyMapping.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Game\Input\PinchGesture.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Game\Input\TouchDetection.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Game\Languages.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Game\NextScene.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Game\SGameState.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Game\SceneTransition.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Globalization\CLocalizableText.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Globalization\GameLocalization.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Globalization\LString.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\PlatformInterface\Example\PlatformInterfaceDemo.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\PlatformInterface\IPlatformInterface.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\PlatformInterface\PlatformInterface.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\PlatformInterface\PlatformInterfaceCreator.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Player\GamePlayer.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Player\IPlayerController.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Player\PlayerState.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\UGBObjectPool\ObjectPool.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\UGBObjectPool\ObjectPoolEntry.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Utils\BaseState.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Utils\BaseStateMachine.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Utils\Extensions.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Utils\FPSMeter.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Utils\GenericStateMachine.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Utils\LazyUpdates.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Utils\MiniJSON.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Utils\ThreadingBridge.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Utils\ThreadingHelper.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Utils\UGBHelpers.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Utils\UIHelpers.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\Utils\UnityGameBaseVersion.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\WebGL\IWebGLPlatformHelper.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\XUI\scripts\Base\AlphaFadeController.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\XUI\scripts\Base\AnimatedTransitionController.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\XUI\scripts\Base\AnimatorCallBacks.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\XUI\scripts\Base\BaseScreen.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\XUI\scripts\Base\IWidget.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\XUI\scripts\Base\LocalizationHelper.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\XUI\scripts\Base\LocalizedTextComponent.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\XUI\scripts\Base\PrefabGenerator.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\XUI\scripts\Base\ScreenManager.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\XUI\scripts\Base\ScreenTransition.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\XUI\scripts\Base\TransitionController.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\XUI\scripts\Base\WidgetData.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\XUI\scripts\Base\WidgetManager.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\XUI\scripts\Base\XUIHierarchyViewer.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\XUI\scripts\Widgets\Button.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\XUI\scripts\Widgets\Image.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\XUI\scripts\Widgets\InputField.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\XUI\scripts\Widgets\RawImage.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\XUI\scripts\Widgets\Scrollbar.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\XUI\scripts\Widgets\Slider.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\XUI\scripts\Widgets\Toggle.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\XUI\scripts\Widgets\ToggleGroup.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\animation\ILoadingScreenController.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\animation\LoadingScene.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\animation\LoadingSceneController.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\animation\TransformSequence.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\audio\Channel.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\audio\ChannelInfo.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\audio\GameMusic.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\audio\MultiChannelController.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\audio\SMusicState.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\io\Metro\ASyncIO.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\io\Metro\Storage.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\io\Storage.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\Core\io\WrappedIO.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\TouchInformation.cs" />
+    <Compile Include="Assets\Packages\UnityGameBase\UGB.cs" />
+    <Reference Include="UnityEngine.UI">
+      <HintPath>References\UnityExtensions\Unity\GUISystem\UnityEngine.UI.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

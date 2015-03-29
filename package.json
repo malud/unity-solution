@@ -1,0 +1,37 @@
+{
+  "name": "unity-solution",
+  "version": "1.0.0",
+  "description": "auto generating a travis compatible unity3d solution",
+  "preferGlobal": true,
+  "main": "./unitysolution",
+  "bin": {
+    "unitysolution": "./bin/unitysolution.js"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/malud/unity-solution"
+  },
+  "keywords": [
+    "unity3d",
+    "mono",
+    "csharp",
+    "solution",
+    "travis",
+    "generate"
+  ],
+  "author": "Marcel Ludwig",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/malud/unity-solution/issues"
+  },
+  "homepage": "https://github.com/malud/unity-solution",
+  "dependencies": {
+    "cli-spinner": "^0.2.0",
+    "download": "^4.1.2",
+    "fs-extra": "^0.17.0",
+    "walker": "^1.0.6"
+  }
+}
