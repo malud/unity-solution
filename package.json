@@ -41,6 +41,7 @@
     "template",
     "package.json",
     "LICENSE",
-    "README.md"
+    "README.md",
+    "index.js"
   ]
 }
