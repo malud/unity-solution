@@ -57,9 +57,36 @@ var writeScripts = function (solutionPath, scripts) {
     });
 };
 
+var writeSymbols = function (solutionPath, platform) {
+    var symbols = require(path.join(__dirname, 'data/platformSymbols.json'));
+    var replacement = '';
+    if(solutionPath.indexOf('Editor') > -1)
+    {
+        replacement = symbols[platform].Editor;
+    } else
+    {
+        replacement = symbols[platform].Player;
+    }
+    replace({
+        regex: '{{DEFINEDSYMBOLS}}',
+        replacement: replacement,
+        paths: [solutionPath],
+        recursive: false,
+        silent: true
+    });
+    replace({
+        regex: '{{PLATFORM}}',
+        replacement: platform,
+        paths: [solutionPath],
+        recursive: false,
+        silent: true
+    });
+};
+
 var prepareReferences = function(solutionPath) {
     var dl = new download({ extract: true, strip: 1 });
-    dl.get('https://github.com/malud/unity-libs/archive/5.0.0f4.zip').dest(solutionPath);
+    dl.get('https://github.com/malud/unity-libs/archive/master.zip').dest(solutionPath);
+    //dl.get('https://github.com/malud/unity-libs/archive/5.0.0f4.zip').dest(solutionPath);
     var spi = new spinner('Downloading references...');
     spi.setSpinnerString(10);
     spi.start();
@@ -127,6 +154,12 @@ solution.create = function (pathParam) {
             slnPath = placeSolution(pathParam);
             writeScripts(path.join(slnPath, 'Assembly-CSharp.csproj'), playerFiles);
             writeScripts(path.join(slnPath, 'Assembly-CSharp-Editor.csproj'), editorFiles);
+            var platform = process.argv[3];
+            if(platform)
+            {
+                writeSymbols(path.join(slnPath, 'Assembly-CSharp.csproj'), platform);
+                writeSymbols(path.join(slnPath, 'Assembly-CSharp-Editor.csproj'), platform);
+            }
             prepareReferences(slnPath);
         })
     ;
