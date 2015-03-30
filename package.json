@@ -1,6 +1,6 @@
 {
   "name": "unity-solution",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "auto generating a travis compatible unity3d solution",
   "preferGlobal": true,
   "main": "./unitysolution",
@@ -36,11 +36,11 @@
     "walker": "^1.0.6"
   },
   "files": [
-  "bin",
-  "data",
-  "template",
-  "package.json",
-  "LICENSE",
-  "README.md"
+    "bin",
+    "data",
+    "template",
+    "package.json",
+    "LICENSE",
+    "README.md"
   ]
 }
