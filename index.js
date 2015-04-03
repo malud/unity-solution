@@ -91,9 +91,15 @@ var prepareReferences = function(solutionPath) {
     spi.setSpinnerString(10);
     spi.start();
 
+    // some curious error dir exists in travis vm? (Error: EEXIST, mkdir)
+    // try to ensure path
+    fse.ensureDirSync(path.resolve(path.join(solutionPath, 'References')));
+
     dl.run(function (err, files) {
-        if(err)
-        {
+        if(err) {
+            if(files) {
+                console.error(files);
+            }
             throw err;
         }
 
