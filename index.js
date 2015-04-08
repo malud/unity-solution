@@ -83,36 +83,42 @@ var writeSymbols = function (solutionPath, platform) {
     });
 };
 
-var prepareReferences = function(solutionPath) {
-    var dl = new download({ extract: true, strip: 1 });
-    dl.get('https://github.com/malud/unity-libs/archive/master.zip').dest(solutionPath);
-    //dl.get('https://github.com/malud/unity-libs/archive/5.0.0f4.zip').dest(solutionPath);
-    var spi = new spinner('Downloading references...');
-    spi.setSpinnerString(10);
-    spi.start();
-
-    // some curious error dir exists in travis vm? (Error: EEXIST, mkdir)
-    // try to ensure path
-    fse.ensureDirSync(path.resolve(path.join(solutionPath, 'References')));
-
-    dl.run(function (err, files) {
-        if(err) {
-            if(files) {
-                console.error(files);
-            }
-            throw err;
-        }
-
-        spi.stop(true);
-        console.log('Solution is prepared now.');
-        replace({
-            regex: '{{REFERENCEPATH}}',
-            replacement: invertSlashes(path.resolve(path.join(solutionPath, 'References'))),
-            paths: [solutionPath],
-            recursive: true,
-            silent: true
-        });
+var setReferencePath = function (solutionPath) {
+    console.log('  -> Linking unity references...');
+    replace({
+        regex: '{{REFERENCEPATH}}',
+        replacement: invertSlashes(path.resolve(path.join(solutionPath, 'References'))),
+        paths: [solutionPath],
+        recursive: true,
+        silent: true
     });
+};
+
+var prepareReferences = function(solutionPath) {
+    var refPath = path.resolve(path.join(solutionPath, 'References'));
+    if(fse.existsSync(refPath))
+    {
+        setReferencePath(solutionPath);
+    } else {
+        var dl = new download({extract: true, strip: 1});
+        dl.get('https://github.com/malud/unity-libs/archive/master.zip').dest(solutionPath);
+        //dl.get('https://github.com/malud/unity-libs/archive/5.0.0f4.zip').dest(solutionPath);
+        var spi = new spinner('  -> Downloading references...');
+        spi.setSpinnerString(10);
+        spi.start();
+
+        dl.run(function (err, files) {
+            if (err) {
+                if (files) {
+                    console.error(files);
+                }
+                throw err;
+            }
+            spi.stop(true);
+            console.log('Solution is prepared now.');
+            setReferencePath(solutionPath);
+        });
+    }
 };
 
 solution.create = function (pathParam) {
