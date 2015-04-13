@@ -1,4 +1,4 @@
-var download    = require('download'),
+var https        = require('https'),
     spinner     = require('cli-spinner').Spinner,
     path        = require('path'),
     walker      = require('walker'),
@@ -100,24 +100,58 @@ var prepareReferences = function(solutionPath) {
     {
         setReferencePath(solutionPath);
     } else {
-        var dl = new download({extract: true, strip: 1});
-        dl.get('https://github.com/malud/unity-libs/archive/master.zip').dest(solutionPath);
-        //dl.get('https://github.com/malud/unity-libs/archive/5.0.0f4.zip').dest(solutionPath);
+
         var spi = new spinner('  -> Downloading references...');
         spi.setSpinnerString(10);
         spi.start();
 
-        dl.run(function (err, files) {
-            if (err) {
-                if (files) {
-                    console.error(files);
+        // TODO more readability
+        var tempFile = fse.createOutputStream(path.resolve('./tempfile.zip'), {'flags': 'a'});
+        https.get(
+            {
+                host: 'codeload.github.com',
+                path: '/malud/unity-libs/zip/master',
+                headers: {  'User-Agent': 'unity-solution node app',
+                            'Cache-Control': 'no-cache'}
+            },
+            function (response) {
+
+                if(response.statusCode !== 200)
+                {
+                    console.error('\nGot statusCode:', response.statusCode);
+                    process.exit(1);
                 }
-                throw err;
-            }
-            spi.stop(true);
-            console.log('Solution is prepared now.');
-            setReferencePath(solutionPath);
-        });
+                response.pipe(tempFile);
+                tempFile.on('finish', function () {
+                   tempFile.close(function () {
+                       spi.stop(true);
+                       // finish cb
+                       var yauzl = require('yauzl');
+                       yauzl.open(path.resolve('./tempfile.zip'), function (err, zipfile) {
+                           if(err) throw err;
+                           zipfile.on('entry', function (entry) {
+                               if (/\/$/.test(entry.fileName) || entry.fileName.indexOf('.') === 0) {
+                                   // directory file names end with '/'
+                                   // dotfiles
+                                   return;
+                               }
+                               zipfile.openReadStream(entry, function (err, readStream) {
+                                   if(err) throw err;
+                                   readStream.pipe(fse.createOutputStream(path.resolve('./' + entry.fileName.replace('unity-libs-master',''))));
+                               });
+                           });
+                           zipfile.once('end', function () {
+                               console.log('Solution is prepared now.');
+                               setReferencePath(solutionPath);
+                           });
+                       });
+                   });
+                });
+                tempFile.on('error', function (err) {
+                    fse.unlink('tempfile.zip');
+                    throw err;
+                });
+            });
     }
 };
 

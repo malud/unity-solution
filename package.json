@@ -30,10 +30,10 @@
   "homepage": "https://github.com/malud/unity-solution",
   "dependencies": {
     "cli-spinner": "^0.2.0",
-    "download": "^4.1.2",
     "fs-extra": "^0.17.0",
     "replace": "^0.3.0",
-    "walker": "^1.0.6"
+    "walker": "^1.0.6",
+    "yauzl": "^2.2.1"
   },
   "files": [
     "bin",
