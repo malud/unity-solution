@@ -73,6 +73,7 @@
     <Reference Include="UnityEditor.OSXStandalone.Extensions">
       <HintPath>{{REFERENCEPATH}}\PlaybackEngines\MacStandaloneSupport\UnityEditor.OSXStandalone.Extensions.dll</HintPath>
     </Reference>
+    {{REFERENCEITEMS}}
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp.csproj">

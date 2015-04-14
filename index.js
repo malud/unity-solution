@@ -16,8 +16,12 @@ var isPathValid = function (dirPath) {
     return fse.existsSync(dirPath);
 };
 
-var isValidFile = function (filePath) {
+var isValidScriptFile = function (filePath) {
     return (filePath.indexOf('.cs') === filePath.length - 3);
+};
+
+var isValidReferenceFile = function (filePath) {
+    return (filePath.indexOf('.dll') === filePath.length - 4);
 };
 
 var isEditorScript = function (pathReference, scriptFile) {
@@ -50,6 +54,24 @@ var writeScripts = function (solutionPath, scripts) {
     replace({
         regex: '{{SCRIPTITEMS}}',
         replacement: scripts.join('\n'),
+        paths: [solutionPath],
+        recursive: false,
+        silent: true,
+        preview: false
+    });
+};
+
+var writeReferences = function (solutionPath, references) {
+    for(var i = 0; i < references.length; i++)
+    {
+            references[i] = '<Reference Include="' + path.basename(references[i], '.dll') + '">' +
+                            '   <HintPath>' + invertSlashes(references[i]) + '</HintPath>' +
+                            '</Reference>';
+    }
+
+    replace({
+        regex: '{{REFERENCEITEMS}}',
+        replacement: references.join('\n'),
         paths: [solutionPath],
         recursive: false,
         silent: true,
@@ -165,6 +187,8 @@ solution.create = function (pathParam) {
     var unityEditorRelated = [];
     var playerFiles = [];
     var editorFiles = [];
+    var playerRefs = [];
+    var editorRefs = [];
 
     walker(fullPath)
         .on('dir', function (dir, stat) {
@@ -183,7 +207,7 @@ solution.create = function (pathParam) {
             }
         })
         .on('file', function (file, stat) {
-            if(isValidFile(file))
+            if(isValidScriptFile(file))
             {
                 if(isEditorScript(unityEditorRelated, file))
                 {
@@ -191,6 +215,15 @@ solution.create = function (pathParam) {
                 } else
                 {
                     playerFiles.push(file);
+                }
+            } else if (isValidReferenceFile(file))
+            {
+                if(isEditorScript(unityEditorRelated, file))
+                {
+                    editorRefs.push(file);
+                } else
+                {
+                    playerRefs.push(file);
                 }
             }
         })
@@ -200,6 +233,8 @@ solution.create = function (pathParam) {
             slnPath = placeSolution(pathParam);
             writeScripts(path.join(slnPath, 'Assembly-CSharp.csproj'), playerFiles);
             writeScripts(path.join(slnPath, 'Assembly-CSharp-Editor.csproj'), editorFiles);
+            writeReferences(path.join(slnPath, 'Assembly-CSharp.csproj'), playerRefs);
+            writeReferences(path.join(slnPath, 'Assembly-CSharp-Editor.csproj'), editorRefs);
             var platform = process.argv[3];
             if(platform)
             {

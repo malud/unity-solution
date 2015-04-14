@@ -49,6 +49,7 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>{{REFERENCEPATH}}\UnityExtensions\Unity\GUISystem\UnityEngine.UI.dll</HintPath>
     </Reference>
+    {{REFERENCEITEMS}}
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="BeforeBuild">
