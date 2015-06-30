@@ -50,7 +50,7 @@
       <HintPath>{{REFERENCEPATH}}\UnityExtensions\Unity\GUISystem\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>{{REFERENCEPATH}}\Unity\GUISystem\Editor\UnityEditor.UI.dll</HintPath>
+      <HintPath>{{REFERENCEPATH}}\UnityExtensions\Unity\GUISystem\Editor\UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Networking">
       <HintPath>{{REFERENCEPATH}}\UnityExtensions\Unity\Networking\UnityEngine.Networking.dll</HintPath>
