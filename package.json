@@ -1,6 +1,6 @@
 {
   "name": "unity-solution",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "auto generating a travis compatible unity3d solution",
   "preferGlobal": true,
   "main": "./unitysolution",
